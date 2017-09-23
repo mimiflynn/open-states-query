@@ -19,7 +19,6 @@ print(file)
 
 output = open(file, 'w')
 
-
 pyopenstates.set_api_key(apikey)
 
 # uses specific argument in function
@@ -30,6 +29,7 @@ metadata = pyopenstates.get_metadata(state)
 output.write(metadata.get('name') + '\n')
 output.write(metadata.get('abbreviation') + '\n')
 output.write(metadata.get('capitol_timezone') + '\n')
+output.write('---------------------------------------------------\n')
 
 # https://openstates.github.io/pyopenstates/pyopenstates%20module.html#pyopenstates.search_bills
 # uses keyworded argument in function
