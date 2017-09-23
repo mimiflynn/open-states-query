@@ -1,0 +1,37 @@
+Louisiana
+la
+America/Chicago
+---------------------------------------------------
+HB 186
+WEAPONS/HANDGUNS:  Provides an exception to the crime of illegal carrying of weapons for certain first responders
+---------------------------------------------------
+HB 255
+WEAPONS/HANDGUNS:  Provides with respect to eligibility requirements for concealed carry permits
+---------------------------------------------------
+HB 318
+WEAPONS/HANDGUNS:  Creates the crime of failure to identify the possession of a concealed handgun to a law enforcement officer (OR SEE FISC NOTE LF RV)
+---------------------------------------------------
+HB 1066
+WEAPONS/HANDGUNS:  Provides with respect to federal background checks for concealed handgun permit holders
+---------------------------------------------------
+HB 8
+WEAPONS/HANDGUNS:  Prohibits the release of information associated with concealed handgun permits or applications for such permits (EN SEE FISC NOTE GF EX See Note)
+---------------------------------------------------
+HB 98
+WEAPONS/HANDGUNS:  Provides with respect to concealed handgun permits issued by sheriffs
+---------------------------------------------------
+HB 717
+WEAPONS/HANDGUNS:  Provides with respect to the reporting of certain judicial proceedings regarding the possession of firearms (EN SEE FISC NOTE GF EX See Note)
+---------------------------------------------------
+HB 265
+WEAPONS/HANDGUNS:  Provides for lifetime concealed handgun permits (EN +$37,500 SD EX See Note)
+---------------------------------------------------
+HB 21
+WEAPONS/HANDGUNS:  Provides with respect to reporting of mental health information regarding the purchase of firearms (OR +$808,000 GF EX See Note)
+---------------------------------------------------
+HB 15
+Authorizes off-duty law enforcement officers to carry concealed handguns in certain facilities
+---------------------------------------------------
+HB 413
+Authorizes concealed handgun permit holders to carry concealed handguns on college campuses
+---------------------------------------------------

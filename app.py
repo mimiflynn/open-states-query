@@ -4,8 +4,7 @@ import sys
 
 apikey = os.environ.get('OPENSTATES_API_KEY')
 
-# search = sys.argv[1]
-search = 'firearms'
+search = sys.argv[1]
 
 def outputAbbr(state):
     print(state)
