@@ -2,7 +2,8 @@ import os
 import pyopenstates
 import sys
 
-apikey = os.environ.get('OPENSTATES_API_KEY')
+# apikey = os.environ.get('OPENSTATES_API_KEY')
+apikey = '9e562b3f-ba23-4531-ac07-d3a318a679f3'
 
 # search = sys.argv[1]
 search = 'firearms'
@@ -11,8 +12,8 @@ def outputAbbr(state):
     print(state)
     return state.get('abbreviation')
 
-def queryState(state, search_terms):
-    file = state + '-data.txt'
+def queryState(state, search_terms, directory):
+    file = directory + '/' + state + '-' + search_terms + '-data.txt'
 
     output = open(file, 'w')
 
@@ -44,6 +45,10 @@ def queryState(state, search_terms):
 
 pyopenstates.set_api_key(apikey)
 
+# create directory to house data per search term
+dir_name = 'data/' + search
+os.makedirs(dir_name)
+
 # query metadata
 metadata = pyopenstates.get_metadata()
 print(metadata)
@@ -54,4 +59,4 @@ print(states)
 
 # loop through list of states and query for keywords
 for state in states:
-    queryState(state, search)
+    queryState(state, search, dir_name)
