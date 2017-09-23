@@ -39,6 +39,8 @@ def queryState(state, search_terms):
         output.write(bill.get('title') + '\n')
         output.write('---------------------------------------------------\n')
 
+    output.close()
+
 
 pyopenstates.set_api_key(apikey)
 
