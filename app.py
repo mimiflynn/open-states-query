@@ -2,8 +2,7 @@ import os
 import pyopenstates
 import sys
 
-# apikey = os.environ.get('OPENSTATES_API_KEY')
-apikey = '9e562b3f-ba23-4531-ac07-d3a318a679f3'
+apikey = os.environ.get('OPENSTATES_API_KEY')
 
 # search = sys.argv[1]
 search = 'firearms'
