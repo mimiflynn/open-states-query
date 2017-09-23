@@ -1,23 +1,35 @@
 import os
 import pyopenstates
 
-apikey = os.environ.get('API_KEY')
-
-print(apikey)
-
-pyopenstates.set_api_key(apikey)
+apikey = os.environ.get('OPENSTATES_API_KEY')
 
 # specify state in one place
 state = 'ny'
+
+# file name to output
+file = 'openstates.txt'
+
+# output above configuration
+print('apikey ----------')
+print(apikey)
+print('state -----------')
+print(state)
+print('file output -----')
+print(file)
+
+output = open(file, 'w')
+
+
+pyopenstates.set_api_key(apikey)
 
 # uses specific argument in function
 metadata = pyopenstates.get_metadata(state)
 
 # refer to metadata documentation
 # https://openstates.github.io/pyopenstates/data%20structures.html#metadata
-print(metadata.get('name'))
-print(metadata.get('abbreviation'))
-print(metadata.get('capitol_timezone'))
+output.write(metadata.get('name') + '\n')
+output.write(metadata.get('abbreviation') + '\n')
+output.write(metadata.get('capitol_timezone') + '\n')
 
 # https://openstates.github.io/pyopenstates/pyopenstates%20module.html#pyopenstates.search_bills
 # uses keyworded argument in function
@@ -30,6 +42,8 @@ bills = pyopenstates.search_bills(state=state, q=search_terms)
 
 # loop through list and output the name
 for bill in bills:
-    print(bill.get('bill_id'))
-    print(bill.get('title'))
-    print('---------------------------------------------------')
+    output.write(bill.get('bill_id') + '\n')
+    output.write(bill.get('title') + '\n')
+    output.write('---------------------------------------------------\n')
+
+output.close()
