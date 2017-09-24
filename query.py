@@ -1,49 +1,41 @@
-import os
 import pyopenstates
 
-apikey = os.environ.get('OPENSTATES_API_KEY')
+def encode_for_file(string):
+    return ' '.join((string, '\n')).encode('utf-8').strip()
 
-# specify state in one place
-state = 'ny'
 
-# file name to output
-file = 'openstates.txt'
+def get_state_abbr(state):
+    return state.get('abbreviation')
 
-# output above configuration
-print('apikey ----------')
-print(apikey)
-print('state -----------')
-print(state)
-print('file output -----')
-print(file)
 
-output = open(file, 'w')
+def query_state(state, search_terms, directory):
+    file = directory + '/' + state + '-' + search_terms + '-data.txt'
 
-pyopenstates.set_api_key(apikey)
+    output = open(file, 'wb')
 
-# uses specific argument in function
-metadata = pyopenstates.get_metadata(state)
+    print('Query for ' + state + ' metadata')
+    metadata = pyopenstates.get_metadata(state)
 
-# refer to metadata documentation
-# https://openstates.github.io/pyopenstates/data%20structures.html#metadata
-output.write(metadata.get('name') + '\n')
-output.write(metadata.get('abbreviation') + '\n')
-output.write(metadata.get('capitol_timezone') + '\n')
-output.write('---------------------------------------------------\n')
+    # refer to metadata documentation
+    # https://openstates.github.io/pyopenstates/data%20structures.html#metadata
+    output.write(encode_for_file(metadata.get('name')))
+    output.write(encode_for_file(metadata.get('abbreviation')))
+    output.write(encode_for_file(metadata.get('capitol_timezone')))
+    output.write(encode_for_file('---------------------------------------------------'))
 
-# https://openstates.github.io/pyopenstates/pyopenstates%20module.html#pyopenstates.search_bills
-# uses keyworded argument in function
-search_terms = 'guns'
-bills = pyopenstates.search_bills(state=state, q=search_terms)
+    # https://openstates.github.io/pyopenstates/pyopenstates%20module.html#pyopenstates.search_bills
+    # uses keyworded argument in function
+    print('Query for ' + state + ' bills')
+    bills = pyopenstates.search_bills(state=state, q=search_terms)
 
-# print the output of the search_bills
-# this is a list with items in the format of https://openstates.github.io/pyopenstates/data%20structures.html#bill
-# print(bills)
+    # print the output of the search_bills
+    # this is a list with items in the format of https://openstates.github.io/pyopenstates/data%20structures.html#bill
+    # print(bills)
 
-# loop through list and output the name
-for bill in bills:
-    output.write(bill.get('bill_id') + '\n')
-    output.write(bill.get('title') + '\n')
-    output.write('---------------------------------------------------\n')
+    # loop through list and output the name
+    for bill in bills:
+        output.write(encode_for_file(bill.get('bill_id')))
+        output.write(encode_for_file(bill.get('title')))
+        output.write(encode_for_file('---------------------------------------------------'))
 
-output.close()
+    output.close()
