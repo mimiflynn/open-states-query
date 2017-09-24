@@ -1,5 +1,6 @@
 import pyopenstates
 
+
 def encode_for_file(string):
     return ' '.join((string, '\n')).encode('utf-8').strip()
 

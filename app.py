@@ -8,6 +8,11 @@ apikey = os.environ.get('OPENSTATES_API_KEY')
 search = sys.argv[1]
 directory_name = sys.argv[2]
 
+# create directory to house data per search term
+dir_name = directory_name + '/' + search
+os.makedirs(dir_name)
+
+
 print('pyopenstates query')
 print('-------------------------------------')
 print('API Key - ' + apikey)
@@ -16,10 +21,6 @@ print('Output directory - ' + directory_name)
 
 
 pyopenstates.set_api_key(apikey)
-
-# create directory to house data per search term
-dir_name = directory_name + '/' + search
-os.makedirs(dir_name)
 
 # query metadata
 print('Querying metadata')
