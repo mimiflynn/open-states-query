@@ -8,5 +8,5 @@ http://docs.openstates.org/projects/pyopenstates/en/latest/
 
 ## app.py
 ```
-OPENSTATES_API_KEY=<your api key here> python3 app.py <search term>
+OPENSTATES_API_KEY=<your api key here> python3 app.py <search term> <directory to output data>
 ```

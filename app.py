@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import pyopenstates
 import sys
@@ -12,11 +13,20 @@ directory_name = sys.argv[2]
 dir_name = directory_name + '/' + search
 os.makedirs(dir_name)
 
+# create README file for directory
+info = '''
+Contents of this directory were queried from openstates.org
+Collected on {:%Y-%m-%d_%H-%M-%S}'''.format(datetime.now())
+
+output = open(dir_name + '/' + 'README.md', 'wb')
+output.write(query.encode_for_file(info))
+output.close()
+
 
 print('pyopenstates query')
 print('-------------------------------------')
 print('API Key - ' + apikey)
-print('Search terms - ' + search)
+print('Search term - ' + search)
 print('Output directory - ' + directory_name)
 
 
