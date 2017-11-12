@@ -21,7 +21,7 @@ def get_state_abbr(state):
     return state.get('abbreviation')
 
 
-def query_state(state, search_terms, directory):
+def query_state(state, search_terms):
     # https://openstates.github.io/pyopenstates/pyopenstates%20module.html#pyopenstates.search_bills
     # uses keyworded argument in function
     print('Query for ' + state + ' bills')
@@ -34,6 +34,4 @@ def query_state(state, search_terms, directory):
     for bill in bills:
         contents.append([bill.get('bill_id'), bill.get('title')])
 
-    file = directory + '/' + state + '-' + search_terms + '-data.csv'
-
-    csv_writer(file, contents)
+    return contents
