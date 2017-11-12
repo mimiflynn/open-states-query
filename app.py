@@ -3,6 +3,7 @@ import os
 import pyopenstates
 import sys
 
+import formatcsv
 import query
 
 apikey = os.environ.get('OPENSTATES_API_KEY')
@@ -19,7 +20,7 @@ Contents of this directory were queried from openstates.org
 Collected on {:%Y-%m-%d_%H-%M-%S}'''.format(datetime.now())
 
 output = open(dir_name + '/' + 'README.md', 'wb')
-output.write(query.encode_for_file(info))
+output.write(formatcsv.encode_for_file(info))
 output.close()
 
 
@@ -43,6 +44,6 @@ states = list(map(query.get_state_abbr, metadata))
 # loop through list of states and query for keywords
 for state in states:
     bills = query.query_state(state, search)
-    contents = query.prep_bill_for_csv(bills)
+    contents = formatcsv.prep_bill_for_csv(bills)
     file = dir_name + '/' + state + '-' + search + '-data.csv'
-    query.csv_writer(file, contents)
+    formatcsv.csv_writer(file, contents)
