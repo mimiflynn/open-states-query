@@ -42,6 +42,7 @@ states = list(map(query.get_state_abbr, metadata))
 
 # loop through list of states and query for keywords
 for state in states:
-    contents = query.query_state(state, search)
+    bills = query.query_state(state, search)
+    contents = query.prep_bill_for_csv(bills)
     file = dir_name + '/' + state + '-' + search + '-data.csv'
     query.csv_writer(file, contents)
