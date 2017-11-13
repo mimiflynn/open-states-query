@@ -41,14 +41,14 @@ metadata = pyopenstates.get_metadata()
 print('Process metadata')
 states = list(map(query.get_state_abbr, metadata))
 
-#us_bills = {}
+#states_bills = {}
 
 # loop through list of states and query for keywords
 for state in states:
     bills = query.query_state(state, search)
     
     # store results in a dict
-    # us_bills[state] = bills
+    # states_bills[state] = bills
 
     # output as CSV
     contents = formatcsv.prep_bill_for_csv(bills)
