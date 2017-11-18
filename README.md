@@ -10,3 +10,10 @@ http://docs.openstates.org/projects/pyopenstates/en/latest/
 ```
 OPENSTATES_API_KEY=<your api key here> python3 app.py <search term> <directory to output data>
 ```
+
+## Maps
+
+Install:
+- matplotlib
+- numpy
+- basemap
