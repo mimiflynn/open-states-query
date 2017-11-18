@@ -33,24 +33,47 @@ print('Output directory - ' + directory_name)
 
 pyopenstates.set_api_key(apikey)
 
+
 # query metadata
 print('Querying metadata')
 metadata = pyopenstates.get_metadata()
+
 
 # create list of states from returned data
 print('Process metadata')
 states = list(map(query.get_state_abbr, metadata))
 
-#states_bills = {}
 
 # loop through list of states and query for keywords
 for state in states:
     bills = query.query_state(state, search)
-    
-    # store results in a dict
-    # states_bills[state] = bills
 
     # output as CSV
     contents = formatcsv.prep_bill_for_csv(bills)
     file = dir_name + '/' + state + '-' + search + '-data.csv'
     formatcsv.csv_writer(file, contents)
+
+
+# create dict with state key and number of bills
+bill_count_by_state = {}
+
+for state in states:
+    bill_count_by_state[state] = len(us_bills[state])
+
+print('Number of bills by state')
+print(bill_count_by_state)
+
+
+# create list of number of bills and add them together
+values = bill_count_by_state.values()
+values.sort()
+
+print(values)
+
+total_bills = 0
+
+for value in values:
+    total_bills = total_bills + value
+    
+print('Total number of bills in US')
+print(total_bills)
